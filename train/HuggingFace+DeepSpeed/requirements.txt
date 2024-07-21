@@ -1,0 +1,11 @@
+accelerate
+datasets
+loguru
+peft
+sentencepiece
+scikit-learn
+tensorboard
+tqdm
+transformers
+trl
+tiktoken
