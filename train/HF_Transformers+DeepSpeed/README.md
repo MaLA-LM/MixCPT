@@ -1,4 +1,4 @@
-# Fine-tuning with HuggingFace+DeepSpeed
+# Fine-tuning with HF_Transformers+DeepSpeed
 ## Setup
 ```bash
 pip install -r requirements.txt
