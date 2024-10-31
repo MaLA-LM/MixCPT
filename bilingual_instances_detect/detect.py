@@ -59,7 +59,7 @@ def process_file(file_path, language, model_path, output_folder):
 
 def main(base_dir, languages, model_path):
     # model = load_model(model_path)
-    pool = multiprocessing.Pool(processes=16)
+    pool = multiprocessing.Pool(processes=8)
 
     for lang in languages:
         directory = os.path.join(base_dir, lang)
