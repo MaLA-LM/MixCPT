@@ -1,0 +1,14 @@
+English | eng_Latn
+Chinese (Simplified) | zho_Hans
+Yue Chinese | yue_Hant
+Cebuano | ceb_Latn
+Tagalog | tgl_Latn
+Ilocano | ilo_Latn
+Marathi | mar_Deva
+Hindi | hin_Deva
+Nepali | npi_Deva
+Zulu | zul_Latn
+Xhosa | xho_Latn
+Swati | ssw_Latn
+Khmer | khm_Khmr
+Vietnamese | vie_Latn

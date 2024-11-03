@@ -1,0 +1,16 @@
+English | eng_Latn
+German | deu_Latn
+Dutch | nld_Latn
+Danish | dan_Latn
+Belarusian | bel_Cyrl
+Russian | rus_Cyrl
+Ukrainian | ukr_Cyrl
+Maori | mri_Latn
+Samoan | smo_Latn
+Fijian | fij_Latn
+Kyrgyz | kir_Cyrl
+Kazakh | kaz_Cyrl
+Bashkir | bak_Cyrl
+Nyanja | nya_Latn
+Bemba | bem_Latn
+Shona | sna_Latn

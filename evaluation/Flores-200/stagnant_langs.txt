@@ -1,0 +1,12 @@
+English | eng_Latn
+Thai | tha_Thai
+Lao | lao_Laoo
+Shan | shn_Mymr
+Yoruba | yor_Latn
+Igbo | ibo_Latn
+Hausa | hau_Latn
+Shona | sna_Latn
+Nyanja | nya_Latn
+Zulu | zul_Latn
+Wolof | wol_Latn
+Bambara | bam_Latn

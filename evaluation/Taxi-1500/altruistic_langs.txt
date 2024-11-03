@@ -1,0 +1,14 @@
+eng_Latn
+zho_Hani
+yue_Hani
+ceb_Latn
+tgl_Latn
+ilo_Latn
+mar_Deva
+hin_Deva
+npi_Deva
+zul_Latn
+xho_Latn
+ssw_Latn
+khm_Khmr
+vie_Latn

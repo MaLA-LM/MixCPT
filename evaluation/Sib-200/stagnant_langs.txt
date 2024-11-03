@@ -1,0 +1,12 @@
+eng_Latn
+tha_Thai
+lao_Laoo
+shn_Mymr
+yor_Latn
+ibo_Latn
+hau_Latn
+sna_Latn
+nya_Latn
+zul_Latn
+wol_Latn
+bam_Latn
