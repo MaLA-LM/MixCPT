@@ -14,23 +14,97 @@ start_time=$(date +%s)
 echo "Job started at: $(date)"
 
 # Load conda environment
-source /path/to/conda/etc/profile.d/conda.sh
-conda activate your_evaluation_environment
+# source /path/to/conda/etc/profile.d/conda.sh
+# conda activate your_evaluation_environment
 
-# List of models to evaluate
-MODEL_IDS=(
-    "meta-llama/Llama-2-7b-hf"
-    "meta-llama/Llama-2-7b-chat-hf"
-    # ... (other model IDs)
+TRANSLATIONS_DIRS=(
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-2-7B-Bilingual-Altruistic/checkpoint-5500
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-2-7B-Bilingual-Code-Altruistic/checkpoint-6500
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-2-7B-Bilingual-Code-Selfish/checkpoint-5000
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-2-7B-Bilingual-Code-Stagnant/checkpoint-4000
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-2-7B-Bilingual-Selfish/checkpoint-4000
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-2-7B-Bilingual-Stagnant/checkpoint-3500
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-2-7B-Monolingual-Altruistic/checkpoint-7500
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-2-7B-Monolingual-Code-Altruistic/checkpoint-8000
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-2-7B-Monolingual-Code-Selfish/checkpoint-4000
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-2-7B-Monolingual-Code-Stagnant/checkpoint-5500
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-2-7B-Monolingual-Selfish/checkpoint-3500
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-2-7B-Monolingual-Stagnant/checkpoint-5000
+    /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-3.1-8B-Bilingual-Altruistic/checkpoint-4000
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-3.1-8B-Bilingual-Code-Altruistic/checkpoint-5000
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-3.1-8B-Bilingual-Code-Selfish/checkpoint-4500
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-3.1-8B-Bilingual-Code-Stagnant/checkpoint-3500
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-3.1-8B-Bilingual-Selfish/checkpoint-3500
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-3.1-8B-Bilingual-Stagnant/checkpoint-3000
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-3.1-8B-Monolingual-Altruistic/checkpoint-5500
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-3.1-8B-Monolingual-Code-Altruistic/checkpoint-6000
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-3.1-8B-Monolingual-Code-Selfish/checkpoint-3500
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-3.1-8B-Monolingual-Code-Stagnant/checkpoint-3500
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-3.1-8B-Monolingual-Selfish/checkpoint-3000
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Llama-3.1-8B-Monolingual-Stagnant/checkpoint-3000
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Viking-7B-Bilingual-Altruistic/checkpoint-5000
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Viking-7B-Bilingual-Code-Altruistic/checkpoint-5500
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Viking-7B-Bilingual-Code-Selfish/checkpoint-4500
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Viking-7B-Bilingual-Code-Stagnant/checkpoint-3500
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Viking-7B-Bilingual-Selfish/checkpoint-4000
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Viking-7B-Bilingual-Stagnant/checkpoint-3000
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Viking-7B-Monolingual-Altruistic/checkpoint-6500
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Viking-7B-Monolingual-Code-Altruistic/checkpoint-7000
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Viking-7B-Monolingual-Code-Selfish/checkpoint-4000
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Viking-7B-Monolingual-Code-Stagnant/checkpoint-5000
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Viking-7B-Monolingual-Selfish/checkpoint-3500
+    # /scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-3shot/Viking-7B-Monolingual-Stagnant/checkpoint-4500
 )
 
-for MODEL_ID in "${MODEL_IDS[@]}"; do
-    echo "Evaluating model: $MODEL_ID"
+TYPES=(
+    Altruistic
+    # Altruistic
+    # Selfish
+    # Stagnant
+    # Selfish
+    # Stagnant
+    # Altruistic
+    # Altruistic
+    # Selfish
+    # Stagnant
+    # Selfish
+    # Stagnant
+    # Altruistic
+    # Altruistic
+    # Selfish
+    # Stagnant
+    # Selfish
+    # Stagnant
+    # Altruistic
+    # Altruistic
+    # Selfish
+    # Stagnant
+    # Selfish
+    # Stagnant
+    # Altruistic
+    # Altruistic
+    # Selfish
+    # Stagnant
+    # Selfish
+    # Stagnant
+    # Altruistic
+    # Altruistic
+    # Selfish
+    # Stagnant
+    # Selfish
+    # Stagnant
+)
+
+for i in "${!TRANSLATIONS_DIRS[@]}"; do
+    TRANSLATIONS_DIR="${TRANSLATIONS_DIRS[$i]}"
+    MODEL_ID=$(echo "Evaluating model: $TRANSLATIONS_DIR" | awk -F'/' '{print $(NF-1)}')
+    TYPE="${TYPES[$i]}"
+
     python ./evaluate.py \
-        --translations_dir "translations/X-Eng-3shot" \
-        --output_dir "results/X-Eng-3"\
+        --translations_dir "$TRANSLATIONS_DIR" \
+        --output_dir "Results/Eng-X-3shot"\
         --model_id "$MODEL_ID" \
-        --task_name "Flores-200-X-Eng"
+        --task_name "${TYPE}-Flores-200-Eng-X-3shot"
 done
 
 duration=$((end_time - start_time))

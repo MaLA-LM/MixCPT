@@ -55,7 +55,7 @@ def main():
     parser.add_argument("--task_name", type=str, required=True)
     args = parser.parse_args()
 
-    model_name = args.model_id.split("/")[-1]
+    model_name = args.model_id
     output_dir = os.path.join(args.output_dir, model_name)
     os.makedirs(output_dir, exist_ok=True)
     output_file_path = f"{output_dir}/results.jsonl"
@@ -64,13 +64,12 @@ def main():
         chrf = CHRF(word_order=2)
         bleu = BLEU(tokenize="flores200")
 
-        translations_dir = os.path.join(args.translations_dir, model_name)
+        translations_dir = args.translations_dir
         paths = [
             os.path.join(translations_dir, f)
             for f in os.listdir(translations_dir)
             if os.path.isfile(os.path.join(translations_dir, f))
         ]
-        assert len(paths) == 203
         results = []
 
         chrf_result_df = pd.DataFrame(columns=["Language", model_name])

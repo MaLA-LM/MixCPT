@@ -1,12 +1,12 @@
 #!/bin/bash
-#SBATCH --job-name=Llama-3.1-8B-Monolingual-Code-Selfish
+#SBATCH --job-name=Viking-7B-Monolingual-Code-Selfish
 #SBATCH --output=/scratch/project_462000506/members/zihao/slurmlog/mixing_ablation_eval/sib200/%x_%j.out
 #SBATCH --error=/scratch/project_462000506/members/zihao/slurmlog/mixing_ablation_eval/sib200/%x_%j.err
 #SBATCH --partition=small-g
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --gpus-per-node=1
-#SBATCH --time=12:00:00
+#SBATCH --time=1:00:00
 #SBATCH --account=project_462000647
 
 start_time=$(date +%s)
@@ -19,21 +19,11 @@ module load pytorch/2.4
 
 # List of other models to evaluate (commented out for reference)
 MODEL_IDS=(
-    /scratch/project_462000506/members/zihao/LLaMA-Factory/saves/selfish/monolingual_code/Llama-3-1-8B/checkpoint-500
-    /scratch/project_462000506/members/zihao/LLaMA-Factory/saves/selfish/monolingual_code/Llama-3-1-8B/checkpoint-1000
-    /scratch/project_462000506/members/zihao/LLaMA-Factory/saves/selfish/monolingual_code/Llama-3-1-8B/checkpoint-1500
-    /scratch/project_462000506/members/zihao/LLaMA-Factory/saves/selfish/monolingual_code/Llama-3-1-8B/checkpoint-2000
-    /scratch/project_462000506/members/zihao/LLaMA-Factory/saves/selfish/monolingual_code/Llama-3-1-8B/checkpoint-2500
-    /scratch/project_462000506/members/zihao/LLaMA-Factory/saves/selfish/monolingual_code/Llama-3-1-8B/checkpoint-3000
-    /scratch/project_462000506/members/zihao/LLaMA-Factory/saves/selfish/monolingual_code/Llama-3-1-8B/checkpoint-3500
-    /scratch/project_462000506/members/zihao/LLaMA-Factory/saves/selfish/monolingual_code/Llama-3-1-8B/checkpoint-4000
-    /scratch/project_462000506/members/zihao/LLaMA-Factory/saves/selfish/monolingual_code/Llama-3-1-8B/checkpoint-4500
-    /scratch/project_462000506/members/zihao/LLaMA-Factory/saves/selfish/monolingual_code/Llama-3-1-8B/checkpoint-5000
-    /scratch/project_462000506/members/zihao/LLaMA-Factory/saves/selfish/monolingual_code/Llama-3-1-8B/checkpoint-5500
+    /scratch/project_462000506/members/zihao/LLaMA-Factory/saves/selfish/monolingual_code/Viking-7B/checkpoint-4000
 )
 
 DATASET_PATH="/scratch/project_462000506/members/zihao/dataset/sib200/data"
-RESULTS_DIR="/scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Sib-200/Results/Llama-3.1-8B-Monolingual-Code-Selfish"
+RESULTS_DIR="/scratch/project_462000506/members/zihao/MaLA-LM/mixing-ablation/evaluation/Sib-200/Results/Viking-7B-Monolingual-Code-Selfish"
 DEVICE_INPUT="cuda:0"
 NUM_EXAMPLES=3
 CONFIG_FILE="./selfish_langs.txt"
