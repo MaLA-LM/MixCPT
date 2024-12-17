@@ -1,0 +1,14 @@
+belebele_eng_Latn
+belebele_zho_Hans
+belebele_yue_Hant
+belebele_ceb_Latn
+belebele_tgl_Latn
+belebele_ilo_Latn
+belebele_mar_Deva
+belebele_hin_Deva
+belebele_npi_Deva
+belebele_zul_Latn
+belebele_xho_Latn
+belebele_ssw_Latn
+belebele_khm_Khmr
+belebele_vie_Latn

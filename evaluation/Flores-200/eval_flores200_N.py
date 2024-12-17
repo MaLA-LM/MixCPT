@@ -77,9 +77,9 @@ def write_jsonl(lst, path):
 
 def format_base_model_sentence_pair(src_lang, tgt_lang, src_sent, tgt_sent=None):
     if tgt_sent:
-        return f"[{src_lang}]: {src_sent}\n[{tgt_lang}]: {tgt_sent}\n"
+        return f"{src_lang}: {src_sent} {tgt_lang}: {tgt_sent}\n"
     else:
-        return f"Translate the following sentence from {src_lang} to {tgt_lang}\n[{src_lang}]: {src_sent}\n[{tgt_lang}]:"
+        return f"Translate the following sentence from {src_lang} to {tgt_lang}\n{src_lang}: {src_sent} {tgt_lang}:"
 
 
 def sample_in_context_examples(
