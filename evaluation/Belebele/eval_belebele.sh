@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=Viking-7B-Based
+#SBATCH --job-name=Llama-2-7B-Based-3shots
 #SBATCH --output=/scratch/project_2005099/members/zihao/slurmlog/mixing_ablation_eval/belebele/%x_%j.out
 #SBATCH --error=/scratch/project_2005099/members/zihao/slurmlog/mixing_ablation_eval/belebele/%x_%j.err
 #SBATCH --partition=gpusmall
 #SBATCH --nodes=1
-#SBATCH --time=24:00:00
+#SBATCH --time=12:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem-per-cpu=8000
@@ -28,11 +28,11 @@ models=(
     # ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Bilingual-Selfish/checkpoint-4000"]="./selfish_langs.txt"
     # ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Bilingual-Stagnant/checkpoint-3500"]="./stagnant_langs.txt"
     # ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Altruistic/checkpoint-7500"]="./altruistic_langs.txt"
-    # ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Code-Altruistic/checkpoint-8000"]="./altruistic_langs.txt"
-    # ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Code-Selfish/checkpoint-4000"]="./selfish_langs.txt"
-    # ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Code-Stagnant/checkpoint-5500"]="./stagnant_langs.txt"
-    # ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Selfish/checkpoint-3500"]="./selfish_langs.txt"
-    # ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Stagnant/checkpoint-5000"]="./stagnant_langs.txt"
+    ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Code-Altruistic/checkpoint-8000"]="./altruistic_langs.txt"
+    ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Code-Selfish/checkpoint-4000"]="./selfish_langs.txt"
+    ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Code-Stagnant/checkpoint-5500"]="./stagnant_langs.txt"
+    ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Selfish/checkpoint-3500"]="./selfish_langs.txt"
+    ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Stagnant/checkpoint-5000"]="./stagnant_langs.txt"
 
     # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Altruistic/checkpoint-4000"]="./altruistic_langs.txt"
     # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Altruistic/checkpoint-5000"]="./altruistic_langs.txt"
@@ -47,22 +47,22 @@ models=(
     # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Selfish/checkpoint-3000"]="./selfish_langs.txt"
     # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Stagnant/checkpoint-3000"]="./stagnant_langs.txt"
 
-    ["/scratch/project_2008161/members/zihao/models/Viking-7B-Bilingual-Altruistic/checkpoint-5000"]="./altruistic_langs.txt"
-    ["/scratch/project_2008161/members/zihao/models/Viking-7B-Bilingual-Code-Altruistic/checkpoint-5500"]="./altruistic_langs.txt"
-    ["/scratch/project_2008161/members/zihao/models/Viking-7B-Bilingual-Code-Selfish/checkpoint-4500"]="./selfish_langs.txt"
-    ["/scratch/project_2008161/members/zihao/models/Viking-7B-Bilingual-Code-Stagnant/checkpoint-3500"]="./stagnant_langs.txt"
-    ["/scratch/project_2008161/members/zihao/models/Viking-7B-Bilingual-Selfish/checkpoint-4000"]="./selfish_langs.txt"
-    ["/scratch/project_2008161/members/zihao/models/Viking-7B-Bilingual-Stagnant/checkpoint-3000"]="./stagnant_langs.txt"
-    ["/scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Altruistic/checkpoint-6500"]="./altruistic_langs.txt"
-    ["/scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Code-Altruistic/checkpoint-7000"]="./altruistic_langs.txt"
-    ["/scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Code-Selfish/checkpoint-4000"]="./selfish_langs.txt"
-    ["/scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Code-Stagnant/checkpoint-5000"]="./stagnant_langs.txt"
-    ["/scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Selfish/checkpoint-3500"]="./selfish_langs.txt"
-    ["/scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Stagnant/checkpoint-4500"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Viking-7B-Bilingual-Altruistic/checkpoint-5000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Viking-7B-Bilingual-Code-Altruistic/checkpoint-5500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Viking-7B-Bilingual-Code-Selfish/checkpoint-4500"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Viking-7B-Bilingual-Code-Stagnant/checkpoint-3500"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Viking-7B-Bilingual-Selfish/checkpoint-4000"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Viking-7B-Bilingual-Stagnant/checkpoint-3000"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Altruistic/checkpoint-6500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Code-Altruistic/checkpoint-7000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Code-Selfish/checkpoint-4000"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Code-Stagnant/checkpoint-5000"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Selfish/checkpoint-3500"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Stagnant/checkpoint-4500"]="./stagnant_langs.txt"
 )
 
 # Base output directory
-output_base="/scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Belebele/Results"
+output_base="/scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Belebele/Results_3shots"
 
 # Iterate over models and tasks
 for model in "${!models[@]}"; do
@@ -79,9 +79,9 @@ for model in "${!models[@]}"; do
         lm_eval --model hf \
             --model_args pretrained="$model" \
             --tasks "$task" \
-            --num_fewshot 0 \
+            --num_fewshot 3 \
             --device cuda:0 \
-            --batch_size 8 \
+            --batch_size 4 \
             --output_path "$output_dir" \
             --seed 42
     done <"$task_file"
