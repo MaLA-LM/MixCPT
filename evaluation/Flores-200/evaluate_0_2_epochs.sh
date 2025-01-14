@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=calculate-Viking-7B-Monolingual-Selfish
-#SBATCH --output=/scratch/project_2005099/members/zihao/slurmlog/mixing_ablation_eval/flores200/Eng-X-0-2-epoch-DE/%x_%j.out
-#SBATCH --error=/scratch/project_2005099/members/zihao/slurmlog/mixing_ablation_eval/flores200/Eng-X-0-2-epoch-DE/%x_%j.err
+#SBATCH --job-name=calculate-Llama-3.1-8B-Monolingual-Stagnant
+#SBATCH --output=/scratch/project_2005099/members/zihao/slurmlog/mixing_ablation_eval/flores200/X-Eng-0-2-epoch-DE/%x_%j.out
+#SBATCH --error=/scratch/project_2005099/members/zihao/slurmlog/mixing_ablation_eval/flores200/X-Eng-0-2-epoch-DE/%x_%j.err
 #SBATCH --partition=medium
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
@@ -18,24 +18,21 @@ source /users/lizihao1/miniconda3/etc/profile.d/conda.sh
 conda activate /scratch/project_2005099/members/zihao/env/vllm_env
 
 TRANSLATIONS_DIRS=(
-    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-128/Viking-7B-Monolingual-Selfish/checkpoint-500
-    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-128/Viking-7B-Monolingual-Selfish/checkpoint-1000
-    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-128/Viking-7B-Monolingual-Selfish/checkpoint-1500
-    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-128/Viking-7B-Monolingual-Selfish/checkpoint-2000
-    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-128/Viking-7B-Monolingual-Selfish/checkpoint-2500
-    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-128/Viking-7B-Monolingual-Selfish/checkpoint-3000
-    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-128/Viking-7B-Monolingual-Selfish/checkpoint-3500
-
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Monolingual-Stagnant/checkpoint-500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Monolingual-Stagnant/checkpoint-1000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Monolingual-Stagnant/checkpoint-1500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Monolingual-Stagnant/checkpoint-2000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Monolingual-Stagnant/checkpoint-2500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Monolingual-Stagnant/checkpoint-3000
 )
 
 TYPES=(
-    Viking-7B-Monolingual-Selfish
-    Viking-7B-Monolingual-Selfish
-    Viking-7B-Monolingual-Selfish
-    Viking-7B-Monolingual-Selfish
-    Viking-7B-Monolingual-Selfish
-    Viking-7B-Monolingual-Selfish
-    Viking-7B-Monolingual-Selfish
+    Llama-3.1-8B-Monolingual-Stagnant
+    Llama-3.1-8B-Monolingual-Stagnant
+    Llama-3.1-8B-Monolingual-Stagnant
+    Llama-3.1-8B-Monolingual-Stagnant
+    Llama-3.1-8B-Monolingual-Stagnant
+    Llama-3.1-8B-Monolingual-Stagnant
 )
 
 for i in "${!TRANSLATIONS_DIRS[@]}"; do
@@ -45,9 +42,9 @@ for i in "${!TRANSLATIONS_DIRS[@]}"; do
 
     python ./evaluate.py \
         --translations_dir "$TRANSLATIONS_DIR" \
-        --output_dir "Results/Eng-X-0-2-epochs/${TYPE}"\
+        --output_dir "Results/X-Eng-0-2-epochs/${TYPE}"\
         --model_id "$MODEL_ID" \
-        --task_name "${TYPE}-Flores-200-De-En"
+        --task_name "${TYPE}-Flores-200-X-En"
 done
 
 duration=$((end_time - start_time))

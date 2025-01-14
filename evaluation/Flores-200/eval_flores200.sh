@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=Viking-7B-Monolingual-Stagnant
-#SBATCH --output=/scratch/project_2005099/members/zihao/slurmlog/mixing_ablation_eval/flores200/X-Eng-0-2epoch/%x_%j.out
-#SBATCH --error=/scratch/project_2005099/members/zihao/slurmlog/mixing_ablation_eval/flores200/X-Eng-0-2epoch/%x_%j.err
+#SBATCH --job-name=Viking-7B(altruistic_langs)
+#SBATCH --output=/scratch/project_2005099/members/zihao/slurmlog/mixing_ablation_eval/flores200/X-Eng/%x_%j.out
+#SBATCH --error=/scratch/project_2005099/members/zihao/slurmlog/mixing_ablation_eval/flores200/X-Eng/%x_%j.err
 #SBATCH --partition=gpusmall
 #SBATCH --nodes=1
-#SBATCH --time=24:00:00
+#SBATCH --time=2:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem-per-cpu=8000
@@ -20,56 +20,16 @@ conda activate /scratch/project_2005099/members/zihao/env/vllm_env
 
 # List of other models to evaluate (commented out for reference)
 MODEL_IDS=(
-    /scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Stagnant/checkpoint-1000
-    /scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Stagnant/checkpoint-1500
-    /scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Stagnant/checkpoint-2000
-    /scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Stagnant/checkpoint-2500
-    /scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Stagnant/checkpoint-3000
-    /scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Stagnant/checkpoint-3500
-    /scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Stagnant/checkpoint-4000
-    /scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Stagnant/checkpoint-500
+    # meta-llama/Llama-3.1-8B
+    # meta-llama/Llama-2-7b-hf
+    LumiOpen/Viking-7B
 )
 
 BASE_RESULTS_DIR="/scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128"
 
 CONFIG_FILES=(
-    # "./altruistic_langs.txt"
-    # "./altruistic_langs.txt"
-    # "./altruistic_langs.txt"
-    # "./altruistic_langs.txt"
-    # "./altruistic_langs.txt"
-    # "./altruistic_langs.txt"
-    # "./altruistic_langs.txt"
-    # "./altruistic_langs.txt"
-    # "./altruistic_langs.txt"
-    # "./altruistic_langs.txt"
-    # "./altruistic_langs.txt"
-    # "./altruistic_langs.txt"
-    # "./altruistic_langs.txt"
-    # "./altruistic_langs.txt"
-    # "./altruistic_langs.txt"
-    # "./altruistic_langs.txt"
-    # "./altruistic_langs.txt"
-    # "./altruistic_langs.txt"
-    # "./altruistic_langs.txt"
+    "./altruistic_langs.txt"
     # "./selfish_langs.txt"
-    # "./selfish_langs.txt"
-    # "./selfish_langs.txt"
-    # "./selfish_langs.txt"
-    # "./selfish_langs.txt"
-    # "./selfish_langs.txt"
-    # "./selfish_langs.txt"
-    # "./selfish_langs.txt"
-    # "./selfish_langs.txt"
-    "./stagnant_langs.txt"
-    "./stagnant_langs.txt"
-    "./stagnant_langs.txt"
-    "./stagnant_langs.txt"
-    "./stagnant_langs.txt"
-    "./stagnant_langs.txt"
-    "./stagnant_langs.txt"
-    "./stagnant_langs.txt"
-    # "./stagnant_langs.txt"
     # "./stagnant_langs.txt"
 )
 
@@ -79,7 +39,7 @@ N_shots=3
 
 for i in "${!MODEL_IDS[@]}"; do
     MODEL_ID="${MODEL_IDS[$i]}"
-    MODEL_PART=$(echo "$MODEL_ID" | awk -F'/' '{print $(NF-1)}')
+    MODEL_PART=$(echo "$MODEL_ID" | awk -F'/' '{print $(NF)}')
     RESULTS_DIR="$BASE_RESULTS_DIR/$MODEL_PART"
     CONFIG_FILE="${CONFIG_FILES[$i]}"
 

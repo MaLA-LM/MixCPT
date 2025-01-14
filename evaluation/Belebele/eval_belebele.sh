@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=Llama-2-7B-Based-3shots
+#SBATCH --job-name=Viking-7B-3shots
 #SBATCH --output=/scratch/project_2005099/members/zihao/slurmlog/mixing_ablation_eval/belebele/%x_%j.out
 #SBATCH --error=/scratch/project_2005099/members/zihao/slurmlog/mixing_ablation_eval/belebele/%x_%j.err
 #SBATCH --partition=gpusmall
 #SBATCH --nodes=1
-#SBATCH --time=12:00:00
+#SBATCH --time=3:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem-per-cpu=8000
@@ -21,6 +21,16 @@ conda activate /scratch/project_2005099/members/zihao/env/harness
 # Model checkpoints and corresponding task files
 declare -A models
 models=(
+    # ["meta-llama/Llama-3.1-8B"]="./altruistic_langs.txt"
+    # ["meta-llama/Llama-3.1-8B"]="./selfish_langs.txt"
+    # ["meta-llama/Llama-3.1-8B"]="./stagnant_langs.txt"
+    # ["meta-llama/Llama-2-7b-hf"]="./altruistic_langs.txt"
+    # ["meta-llama/Llama-2-7b-hf"]="./selfish_langs.txt"
+    # ["meta-llama/Llama-2-7b-hf"]="./stagnant_langs.txt"
+    ["LumiOpen/Viking-7B"]="./altruistic_langs.txt"
+    ["LumiOpen/Viking-7B"]="./selfish_langs.txt"
+    ["LumiOpen/Viking-7B"]="./stagnant_langs.txt"
+
     # ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Bilingual-Altruistic/checkpoint-5500"]="./altruistic_langs.txt"
     # ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Bilingual-Code-Altruistic/checkpoint-6500"]="./altruistic_langs.txt"
     # ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Bilingual-Code-Selfish/checkpoint-5000"]="./selfish_langs.txt"
@@ -28,11 +38,11 @@ models=(
     # ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Bilingual-Selfish/checkpoint-4000"]="./selfish_langs.txt"
     # ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Bilingual-Stagnant/checkpoint-3500"]="./stagnant_langs.txt"
     # ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Altruistic/checkpoint-7500"]="./altruistic_langs.txt"
-    ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Code-Altruistic/checkpoint-8000"]="./altruistic_langs.txt"
-    ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Code-Selfish/checkpoint-4000"]="./selfish_langs.txt"
-    ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Code-Stagnant/checkpoint-5500"]="./stagnant_langs.txt"
-    ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Selfish/checkpoint-3500"]="./selfish_langs.txt"
-    ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Stagnant/checkpoint-5000"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Code-Altruistic/checkpoint-8000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Code-Selfish/checkpoint-4000"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Code-Stagnant/checkpoint-5500"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Selfish/checkpoint-3500"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-2-7B-Monolingual-Stagnant/checkpoint-5000"]="./stagnant_langs.txt"
 
     # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Altruistic/checkpoint-4000"]="./altruistic_langs.txt"
     # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Altruistic/checkpoint-5000"]="./altruistic_langs.txt"
@@ -59,6 +69,94 @@ models=(
     # ["/scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Code-Stagnant/checkpoint-5000"]="./stagnant_langs.txt"
     # ["/scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Selfish/checkpoint-3500"]="./selfish_langs.txt"
     # ["/scratch/project_2008161/members/zihao/models/Viking-7B-Monolingual-Stagnant/checkpoint-4500"]="./stagnant_langs.txt"
+
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Altruistic/checkpoint-1000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Altruistic/checkpoint-1500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Altruistic/checkpoint-2000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Altruistic/checkpoint-2500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Altruistic/checkpoint-3000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Altruistic/checkpoint-3500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Altruistic/checkpoint-500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Altruistic/checkpoint-1000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Altruistic/checkpoint-1500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Altruistic/checkpoint-2000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Altruistic/checkpoint-2500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Altruistic/checkpoint-3000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Altruistic/checkpoint-3500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Altruistic/checkpoint-4000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Altruistic/checkpoint-4500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Altruistic/checkpoint-500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Altruistic/checkpoint-1000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Altruistic/checkpoint-1500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Altruistic/checkpoint-2000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Altruistic/checkpoint-2500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Altruistic/checkpoint-3000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Altruistic/checkpoint-3500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Altruistic/checkpoint-4000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Altruistic/checkpoint-4500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Altruistic/checkpoint-500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Altruistic/checkpoint-5000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Altruistic/checkpoint-1000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Altruistic/checkpoint-1500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Altruistic/checkpoint-2000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Altruistic/checkpoint-2500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Altruistic/checkpoint-3000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Altruistic/checkpoint-3500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Altruistic/checkpoint-4000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Altruistic/checkpoint-4500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Altruistic/checkpoint-500"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Altruistic/checkpoint-5000"]="./altruistic_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Altruistic/checkpoint-5500"]="./altruistic_langs.txt"
+
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Selfish/checkpoint-1000"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Selfish/checkpoint-1500"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Selfish/checkpoint-2000"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Selfish/checkpoint-2500"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Selfish/checkpoint-3000"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Selfish/checkpoint-500"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Selfish/checkpoint-1000"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Selfish/checkpoint-1500"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Selfish/checkpoint-2000"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Selfish/checkpoint-2500"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Selfish/checkpoint-3000"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Selfish/checkpoint-3500"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Selfish/checkpoint-4000"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Selfish/checkpoint-500"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Selfish/checkpoint-1000"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Selfish/checkpoint-1500"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Selfish/checkpoint-2000"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Selfish/checkpoint-2500"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Selfish/checkpoint-500"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Selfish/checkpoint-1000"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Selfish/checkpoint-1500"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Selfish/checkpoint-2000"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Selfish/checkpoint-2500"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Selfish/checkpoint-3000"]="./selfish_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Selfish/checkpoint-500"]="./selfish_langs.txt"
+
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Stagnant/checkpoint-1000"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Stagnant/checkpoint-1500"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Stagnant/checkpoint-2000"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Stagnant/checkpoint-2500"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Stagnant/checkpoint-500"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Stagnant/checkpoint-1000"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Stagnant/checkpoint-1500"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Stagnant/checkpoint-2000"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Stagnant/checkpoint-2500"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Stagnant/checkpoint-3000"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Bilingual-Code-Stagnant/checkpoint-500"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Stagnant/checkpoint-1000"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Stagnant/checkpoint-1500"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Stagnant/checkpoint-2000"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Stagnant/checkpoint-2500"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Stagnant/checkpoint-500"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Stagnant/checkpoint-1000"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Stagnant/checkpoint-1500"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Stagnant/checkpoint-2000"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Stagnant/checkpoint-2500"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Stagnant/checkpoint-3000"]="./stagnant_langs.txt"
+    # ["/scratch/project_2008161/members/zihao/models/Llama-3.1-8B-Monolingual-Code-Stagnant/checkpoint-500"]="./stagnant_langs.txt"
+
 )
 
 # Base output directory

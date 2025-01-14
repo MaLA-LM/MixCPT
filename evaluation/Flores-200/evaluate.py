@@ -85,7 +85,7 @@ def main():
             results.append(res)
 
         write_jsonl(results, output_file_path)
-        write2sheet(f"{args.task_name}-chrF", chrf_result_df)
+        # write2sheet(f"{args.task_name}-chrF", chrf_result_df)
         write2sheet(f"{args.task_name}-BLEU", bleu_result_df)
 
 
