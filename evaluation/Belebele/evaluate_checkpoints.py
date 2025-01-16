@@ -8,18 +8,20 @@ main_directory = "/scratch/project_2005099/members/zihao/mala/mixing-ablation/ev
 
 # List of models to process
 models_to_process = [
-    "Llama-3.1-8B-Bilingual-Selfish",
-    "Llama-3.1-8B-Bilingual-Code-Selfish",
-    "Llama-3.1-8B-Monolingual-Selfish",
-    "Llama-3.1-8B-Monolingual-Code-Selfish",
-    "Llama-3.1-8B-Bilingual-Altruistic",
-    "Llama-3.1-8B-Bilingual-Code-Altruistic",
-    "Llama-3.1-8B-Monolingual-Altruistic",
-    "Llama-3.1-8B-Monolingual-Code-Altruistic",
-    "Llama-3.1-8B-Bilingual-Stagnant",
-    "Llama-3.1-8B-Bilingual-Code-Stagnant",
-    "Llama-3.1-8B-Monolingual-Stagnant",
-    "Llama-3.1-8B-Monolingual-Code-Stagnant",
+    # "Llama-3.1-8B-Bilingual-Selfish",
+    # "Llama-3.1-8B-Bilingual-Code-Selfish",
+    # "Llama-3.1-8B-Monolingual-Selfish",
+    # "Llama-3.1-8B-Monolingual-Code-Selfish",
+    # "Llama-3.1-8B-Bilingual-Altruistic",
+    # "Llama-3.1-8B-Bilingual-Code-Altruistic",
+    # "Llama-3.1-8B-Monolingual-Altruistic",
+    # "Llama-3.1-8B-Monolingual-Code-Altruistic",
+    # "Llama-3.1-8B-Bilingual-Stagnant",
+    # "Llama-3.1-8B-Bilingual-Code-Stagnant",
+    # "Llama-3.1-8B-Monolingual-Stagnant",
+    # "Llama-3.1-8B-Monolingual-Code-Stagnant",
+    "LumiOpen",
+    "meta-llama"
 ]
 
 # Iterate through each model and process its checkpoints
