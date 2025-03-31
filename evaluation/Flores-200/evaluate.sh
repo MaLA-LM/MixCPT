@@ -21,87 +21,87 @@ TRANSLATIONS_DIRS=(
     /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-128/Viking-7B/Viking-7B
     /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-128/Llama-3.1-8B/Llama-3.1-8B
     /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/Eng-X-128/Llama-2-7b-hf/Llama-2-7b-hf
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B/Viking-7B
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B/Llama-3.1-8B
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7b-hf/Llama-2-7b-hf
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Bilingual-Altruistic/checkpoint-5500
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Bilingual-Code-Altruistic/checkpoint-6500
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Bilingual-Code-Selfish/checkpoint-5000
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Bilingual-Code-Stagnant/checkpoint-4000
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Bilingual-Selfish/checkpoint-4000
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Bilingual-Stagnant/checkpoint-3500
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Monolingual-Altruistic/checkpoint-7500
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Monolingual-Code-Altruistic/checkpoint-8000
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Monolingual-Code-Selfish/checkpoint-4000
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Monolingual-Code-Stagnant/checkpoint-5500
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Monolingual-Selfish/checkpoint-3500
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Monolingual-Stagnant/checkpoint-5000
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Bilingual-Altruistic/checkpoint-4000
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Bilingual-Code-Altruistic/checkpoint-5000
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Bilingual-Code-Selfish/checkpoint-4500
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Bilingual-Code-Stagnant/checkpoint-3500
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Bilingual-Selfish/checkpoint-3500
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Bilingual-Stagnant/checkpoint-3000
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Monolingual-Altruistic/checkpoint-5500
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Monolingual-Code-Altruistic/checkpoint-6000
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Monolingual-Code-Selfish/checkpoint-3500
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Monolingual-Code-Stagnant/checkpoint-3500
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Monolingual-Selfish/checkpoint-3000
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Monolingual-Stagnant/checkpoint-3000
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Bilingual-Altruistic/checkpoint-5000
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Bilingual-Code-Altruistic/checkpoint-5500
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Bilingual-Code-Selfish/checkpoint-4500
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Bilingual-Code-Stagnant/checkpoint-3500
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Bilingual-Selfish/checkpoint-4000
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Bilingual-Stagnant/checkpoint-3000
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Monolingual-Altruistic/checkpoint-6500
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Monolingual-Code-Altruistic/checkpoint-7000
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Monolingual-Code-Selfish/checkpoint-4000
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Monolingual-Code-Stagnant/checkpoint-5000
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Monolingual-Selfish/checkpoint-3500
-    # /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Monolingual-Stagnant/checkpoint-4500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B/Viking-7B
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B/Llama-3.1-8B
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7b-hf/Llama-2-7b-hf
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Bilingual-Altruistic/checkpoint-5500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Bilingual-Code-Altruistic/checkpoint-6500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Bilingual-Code-Selfish/checkpoint-5000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Bilingual-Code-Stagnant/checkpoint-4000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Bilingual-Selfish/checkpoint-4000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Bilingual-Stagnant/checkpoint-3500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Monolingual-Altruistic/checkpoint-7500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Monolingual-Code-Altruistic/checkpoint-8000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Monolingual-Code-Selfish/checkpoint-4000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Monolingual-Code-Stagnant/checkpoint-5500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Monolingual-Selfish/checkpoint-3500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-2-7B-Monolingual-Stagnant/checkpoint-5000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Bilingual-Altruistic/checkpoint-4000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Bilingual-Code-Altruistic/checkpoint-5000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Bilingual-Code-Selfish/checkpoint-4500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Bilingual-Code-Stagnant/checkpoint-3500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Bilingual-Selfish/checkpoint-3500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Bilingual-Stagnant/checkpoint-3000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Monolingual-Altruistic/checkpoint-5500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Monolingual-Code-Altruistic/checkpoint-6000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Monolingual-Code-Selfish/checkpoint-3500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Monolingual-Code-Stagnant/checkpoint-3500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Monolingual-Selfish/checkpoint-3000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Llama-3.1-8B-Monolingual-Stagnant/checkpoint-3000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Bilingual-Altruistic/checkpoint-5000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Bilingual-Code-Altruistic/checkpoint-5500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Bilingual-Code-Selfish/checkpoint-4500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Bilingual-Code-Stagnant/checkpoint-3500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Bilingual-Selfish/checkpoint-4000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Bilingual-Stagnant/checkpoint-3000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Monolingual-Altruistic/checkpoint-6500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Monolingual-Code-Altruistic/checkpoint-7000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Monolingual-Code-Selfish/checkpoint-4000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Monolingual-Code-Stagnant/checkpoint-5000
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Monolingual-Selfish/checkpoint-3500
+    /scratch/project_2005099/members/zihao/mala/mixing-ablation/evaluation/Flores-200/Translations/X-Eng-128/Viking-7B-Monolingual-Stagnant/checkpoint-4500
 )
 
 TYPES=(
     Base
     Base
     Base
-    # Altruistic
-    # Altruistic
-    # Selfish
-    # Stagnant
-    # Selfish
-    # Stagnant
-    # Altruistic
-    # Altruistic
-    # Selfish
-    # Stagnant
-    # Selfish
-    # Stagnant
-    # Altruistic
-    # Altruistic
-    # Selfish
-    # Stagnant
-    # Selfish
-    # Stagnant
-    # Altruistic
-    # Altruistic
-    # Selfish
-    # Stagnant
-    # Selfish
-    # Stagnant
-    # Altruistic
-    # Altruistic
-    # Selfish
-    # Stagnant
-    # Selfish
-    # Stagnant
-    # Altruistic
-    # Altruistic
-    # Selfish
-    # Stagnant
-    # Selfish
-    # Stagnant
+    Altruistic
+    Altruistic
+    Selfish
+    Stagnant
+    Selfish
+    Stagnant
+    Altruistic
+    Altruistic
+    Selfish
+    Stagnant
+    Selfish
+    Stagnant
+    Altruistic
+    Altruistic
+    Selfish
+    Stagnant
+    Selfish
+    Stagnant
+    Altruistic
+    Altruistic
+    Selfish
+    Stagnant
+    Selfish
+    Stagnant
+    Altruistic
+    Altruistic
+    Selfish
+    Stagnant
+    Selfish
+    Stagnant
+    Altruistic
+    Altruistic
+    Selfish
+    Stagnant
+    Selfish
+    Stagnant
 )
 
 for i in "${!TRANSLATIONS_DIRS[@]}"; do

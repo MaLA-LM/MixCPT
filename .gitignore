@@ -163,3 +163,8 @@ cython_debug/
 
 *.jsonl
 *.json
+evaluation/Belebele/
+evaluation/Visualization/Belebele/
+evaluation/Visualization/Belebele-0-2-epochs/
+evaluation/Visualization/Belebele-3shots/
+evaluation/Visualization/Flores-0-2-epochs/
