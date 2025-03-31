@@ -57,7 +57,7 @@ All evaluations use 3-shot prompting.
 
 ## 🧠 Models
 
-We release all **36 CPT models** on [🤗Hugging Face]().
+We release all **36 CPT models** on [🤗Hugging Face](https://huggingface.co/collections/Zihao-Li/multilingual-continual-pretraining-67ea87fbc68ccdaa83fdc01c).
 
 ---
 
@@ -67,7 +67,7 @@ We release all **36 CPT models** on [🤗Hugging Face]().
 - Bilingual: Subset of `[Lego-MT&NLLB]`
 - Code: Subset of `[The Stack]`
 
-We release the filtered dataset links on [🤗Hugging Face]().
+We release the filtered dataset links on [🤗Hugging Face](https://huggingface.co/collections/Zihao-Li/multilingual-continual-pretraining-67ea87fbc68ccdaa83fdc01c).
 
 ---
 
