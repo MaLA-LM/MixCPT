@@ -89,7 +89,13 @@ We release the filtered dataset links on [🤗Hugging Face](https://huggingface.
 ## 📝 Citation
 
 ```bibtex
-
+@article{MixCPT,
+    title={Rethinking Multilingual Continual Pretraining: Data Mixing for Adapting LLMs Across Languages and Resources}, 
+    author={Zihao Li and Shaoxiong Ji and Hengyu Luo and Jörg Tiedemann},
+    year={2025},
+    journal={arXiv preprint 2504.04152},
+    url={https://arxiv.org/abs/2504.04152}, 
+}
 ```
 
 ---
