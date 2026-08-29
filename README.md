@@ -92,8 +92,9 @@ We release the filtered dataset links on [🤗Hugging Face](https://huggingface.
 @inproceedings{li2025rethinking,
   title={Rethinking Multilingual Continual Pretraining: Data Mixing for Adapting LLMs Across Languages and Resources},
   author={Li, Zihao and Ji, Shaoxiong and Luo, Hengyu and Tiedemann, J{\"o}rg},
-  booktitle={Second Conference on Language Modeling},
-  year={2025}
+  booktitle={Proceedings of the 2025 Conference on Language Modeling (COLM)},
+  year={2025},
+  url={https://openreview.net/forum?id=mpTIzK4Zca}
 }
 ```
 
